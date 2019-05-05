@@ -76,22 +76,22 @@ RSpec.describe Match do
       end
     end
 
-    context 'next point goes to tiebreak' do
-      before do
-        @match.players["p1"].games = 6
-        @match.players["p2"].points = 5
-        @match.players["p1"].points = 3
-        @match.players["p2"].points = 0
-      end
-      specify do
-        @match.pointWonBy("p1")
-        expect(@match.players["p1"].games).to eq 0
-        expect(@match.players["p2"].games).to eq 0
-        expect(@match.players["p1"].points).to eq 0
-        expect(@match.players["p2"].points).to eq 0
-        expect(@match.tiebreak).to be true
-      end
-    end
+    # context 'next point goes to tiebreak' do
+    #   before do
+    #     @match.players["p1"].games = 6
+    #     @match.players["p2"].points = 5
+    #     @match.players["p1"].points = 3
+    #     @match.players["p2"].points = 0
+    #   end
+    #   specify do
+    #     @match.pointWonBy("p1")
+    #     expect(@match.players["p1"].games).to eq 0
+    #     expect(@match.players["p2"].games).to eq 0
+    #     expect(@match.players["p1"].points).to eq 0
+    #     expect(@match.players["p2"].points).to eq 0
+    #     expect(@match.tiebreak).to be true
+    #   end
+    # end
 
   end
 

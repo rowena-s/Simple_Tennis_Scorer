@@ -9,7 +9,7 @@ Assuming you've run irb in a shell from the project root directory.
 
 ```
 >> require './match.rb'
->> match=Match.new("player1",player2)
+>> match=Match.new("player1","player2")
 #indicates player 1 won a point
 >> match.pointWonBy("player1")
 #prints the score in format <games>, <points>  
