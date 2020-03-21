@@ -1,44 +1,22 @@
 class Match
-  require './player'
-  MIN_PTS_TO_WIN = 3
-  PTS_DIFF = 2
-  MIN_GAMES_TO_WIN = 6
-  GAMES_DIFF = 2
+
   attr_reader :players, :tiebreak, :matchstate
   def initialize(player1, player2)
-      @scores = ["0","15", "30","40"]
-      @player1 = Player.new(player1)
-      @player2 = Player.new(player2)
-      @players = {player1 => @player1, player2 => @player2}
-      @tiebreak = false
-      @matchState = "inprogress"
-  end
+     # que of set sets with (player1, player2)
+     sets_list = []
+     sets_list.push(Set.new(player1, player2))
 
+  end
+  
     def pointWonBy(player)
-      @players[player].points +=1
-      # move this logic to function
-      if @player1.points > MIN_PTS_TO_WIN && (@player1.points - @player2.points >= PTS_DIFF)
-        gameWonBy(@player1)
-      elsif @player2.points > MIN_PTS_TO_WIN && (@player2.points - @player1.points >=PTS_DIFF)
-        gameWonBy(@player2)
-      end
-      # move this logic to function
-      # if score = 6-5, play to 7. if score goes to 7-6 play a tie-break
-      # in a tiebreak - win by 7 or more points by a margin of 2
-      if @player1.games >= MIN_GAMES_TO_WIN
-        if @player2.games == 5
-          @tiebreak = true
-        else
-          matchWon(player)
-        end
-      elsif @player2.games >= MIN_GAMES_TO_WIN
-        if @player2.games == 5
-          @tiebreak = true
-        else
-          matchWon(player)
-        end
-      end
+      # call set.pointWonBy in here
+      #if set finished, push new set onto list
     end  
+
+    def getCurrentSet()
+      return sets_list.last
+    end
+
 
     def matchGames      
       return "#{@player1.games}-#{@player2.games}"
